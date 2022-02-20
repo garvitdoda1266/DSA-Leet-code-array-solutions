@@ -1,0 +1,31 @@
+Given an array intervals where intervals[i] = [li, ri] represent the interval [li, ri), remove all intervals that are covered by another interval in the list.
+
+The interval [a, b) is covered by the interval [c, d) if and only if c <= a and b <= d.
+
+Return the number of remaining intervals.
+
+
+CODE:
+int removeCoveredIntervals(vector<vector<int>>& nums) {
+        sort(nums.begin(),nums.end());
+        int c=1;
+        int l=nums[0][0],r=nums[0][1];
+        for(int i=1;i<nums.size();i++){
+           if(nums[i][0]>l){
+               if(nums[i][1]>r){
+                   c++;
+                   r=nums[i][1];
+                   l=nums[i][0];
+               }
+               
+           }
+          else{
+                if(nums[i][1]>=r){
+                    r=nums[i][1];
+                }
+            }
+        }
+        return c;
+    }
+    
+  // O(nlogn)
