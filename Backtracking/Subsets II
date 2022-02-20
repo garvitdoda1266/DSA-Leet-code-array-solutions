@@ -1,0 +1,31 @@
+Given an integer array nums that may contain duplicates, return all possible subsets (the power set).
+
+The solution set must not contain duplicate subsets. Return the solution in any order.
+
+
+CODE:-
+
+ vector<vector<int>> gar;
+    vector<vector<int>> subsetsWithDup(vector<int>& nums) {
+       sort(nums.begin(),nums.end());
+        vector<int> g;
+        int index=0;
+        find(g,nums,index);
+        return gar;
+    }
+    void find(vector<int> g,vector<int> nums,int index){
+        gar.push_back(g);
+            while(index<nums.size()){
+                g.push_back(nums[index]);
+                find(g,nums,index+1);
+                while(index+1<nums.size()&&nums[index]==nums[index+1]){
+                    index++;
+                }
+                index++;
+                g.pop_back();
+            }
+        
+        
+    }
+    
+    //o(nlogn)
