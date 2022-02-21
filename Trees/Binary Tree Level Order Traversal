@@ -1,0 +1,32 @@
+Given the root of a binary tree, return the level order traversal of its nodes' values. (i.e., from left to right, level by level).
+
+CODE:-
+ vector<vector<int>> levelOrder(TreeNode* root) {
+        vector<vector<int>> gar;  
+        if(root==NULL){
+        return gar;
+        }
+        queue<TreeNode* > q;
+        q.push(root);
+        while(!q.empty()){
+            int n=q.size();
+            vector<int> g;
+            for(int i=0;i<n;i++){
+                TreeNode* k=q.front();
+                q.pop();
+                g.push_back(k->val);
+                if(k->left){
+                    q.push(k->left);
+                }
+                if(k->right){
+                    q.push(k->right);
+                }
+                
+            }
+            gar.push_back(g);
+        }
+        return gar;
+        
+        }
+        
+        //O(n)
