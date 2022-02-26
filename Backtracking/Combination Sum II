@@ -1,0 +1,43 @@
+Given a collection of candidate numbers (candidates) and a target number (target), find all unique combinations in candidates where the candidate numbers sum to target.
+
+Each number in candidates may only be used once in the combination.
+
+Note: The solution set must not contain duplicate combinations.
+
+
+CODE:-
+ vector<vector<int>> gar;
+    vector<vector<int>> combinationSum2(vector<int>& can, int target) {
+        int sum=0;
+        vector<int> g;
+        unordered_map<int,int> k;
+        for(int c:can){
+            k[c]++;
+        }
+        unordered_map<int, int>:: iterator start=k.begin();
+        find(k,target,sum,g,start);
+        return gar;
+    }
+    void find(unordered_map<int,int> k,int target,int sum,vector<int> g,unordered_map<int, int>:: iterator start){
+        if(sum==target){
+            gar.push_back(g);
+            return;
+        }
+        else if(sum>target){
+            return;
+        }
+            for(auto i=start;i!=k.end();i++){
+                if(k[i->first]>0){
+                sum=sum+i->first;
+                g.push_back(i->first);
+                k[i->first]--;
+                find(k,target,sum,g,i);
+                k[i->first]++;
+                g.pop_back();
+                sum=sum-i->first;
+                }
+            }
+    }
+    
+    
+    //o(n)
